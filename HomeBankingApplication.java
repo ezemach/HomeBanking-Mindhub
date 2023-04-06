@@ -16,6 +16,7 @@ public class HomeBankingApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HomeBankingApplication.class, args);
+		System.out.println("hola");
 	}
 
 	@Bean
