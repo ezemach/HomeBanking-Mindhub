@@ -19,7 +19,7 @@ public class HomeBankingApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HomeBankingApplication.class, args);
-		System.out.println("hola");
+
 	}
 
 	@Bean
@@ -66,12 +66,29 @@ public class HomeBankingApplication {
 			accountRepository.save(account1);
 			transactionRepository.save(transaction2);
 
+			Transaction transaction3 = new Transaction(TransactionType.DEBIT, 550.10, "Debito personal", LocalDateTime.now());
+			transactionRepository.save(transaction3);
+			account1.addTransaction(transaction3);
+			accountRepository.save(account1);
+			transactionRepository.save(transaction3);
+
+			Transaction transaction_1 = new Transaction(TransactionType.CREDIT, 90.00, "credito estatal", LocalDateTime.now());
+			transactionRepository.save(transaction_1);
+			account2.addTransaction(transaction_1);
+			accountRepository.save(account2);
+			transactionRepository.save(transaction_1);
+
+			Transaction transaction_2 = new Transaction(TransactionType.DEBIT, 10.20, "Debito Servicio", LocalDateTime.now());
+			transactionRepository.save(transaction_2);
+			account2.addTransaction(transaction_2);
+			accountRepository.save(account2);
+			transactionRepository.save(transaction_2);
 
 
 
 
 
-//			System.out.println(account1);
+
 		};
 	}
 }
