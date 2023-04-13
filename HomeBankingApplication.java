@@ -1,5 +1,4 @@
 package com.mindhub.homebanking;
-
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.models.Transaction;
@@ -83,8 +82,6 @@ public class HomeBankingApplication {
 			account2.addTransaction(transaction_2);
 			accountRepository.save(account2);
 			transactionRepository.save(transaction_2);
-
-
 
 
 
