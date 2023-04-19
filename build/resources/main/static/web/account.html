@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Banking || Account</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./images/faviBank.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header
+      class="d-flex justify-content-around align-items-center bg-black text-white-50"
+    >
+      <img
+        src="./images/logoBanco.png"
+        alt=""
+        style="width: 100px"
+        id="imagenHeader"
+        class=""
+      />
+      <h1>Home Banking | Account</h1>
+      <h2></h2>
+    </header>
+
+    <main id="app">
+      <div class="d-flex justify-content-around pt-4">
+        <h3>Account Nº: {{data.number}}</h3>
+        <h4>balance state: {{data.balance}}</h4>
+      </div>
+      <div class="d-flex justify-content-around align-items-center pt-4">
+        <table class="table container">
+          <thead>
+            <tr>
+              <th colspan="2" class="align-items-center">Transactions</th>
+            </tr>
+            <tr class="bg-secondary">
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Description</th>
+              <th scope="col">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template v-for="datos of transacciones">
+              <tr :class="datos.type">
+                <td>
+                  {{datos.date.slice(0,10)}} | {{datos.date.slice(11,16)}}
+                </td>
+                <td>$ {{datos.amount.toFixed(2)}}</td>
+                <td>{{datos.description}}</td>
+                <td>{{datos.type}}</td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <footer></footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/account.js"></script>
+  </body>
+</html>
