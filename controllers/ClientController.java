@@ -73,7 +73,7 @@ public class ClientController {
         accountRepository.save(newAccount);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @RequestMapping(path = "/api/clients/current", method = RequestMethod.POST)
+    @RequestMapping(path = "/api/clients/current")
     public ClientDTO getCurrentClient(Authentication authentication) {
         return new ClientDTO(clientRepository.findByEmail(authentication.getName()));
     }

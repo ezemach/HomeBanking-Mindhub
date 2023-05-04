@@ -21,7 +21,7 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
 
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(inputName-> {
+        auth.userDetailsService(inputName->  {
             Client client = clientRepository.findByEmail(inputName);
             if (client != null) {
                 if(client.getEmail().contentEquals("admin@admin.com")){

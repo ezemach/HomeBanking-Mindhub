@@ -30,7 +30,7 @@ public class HomeBankingApplication {
 		return (args) -> {
 
 			Client client1 = new Client("Melba", "Morel", "melba@hotmail.com", passwordEncoder.encode("soyMelbaMorel"));
-			Client client2 = new Client("Chloe", "O'Brian" , "pepe@hotmail.com", passwordEncoder.encode("soyChloeObrian") );
+			Client client2 = new Client("Chloe", "O'Brian" , "pepe@hotmail.com", passwordEncoder.encode("d") );
 			Client admin = new Client("admin", "admin", "admin@admin.com", passwordEncoder.encode("admin"));
 
 

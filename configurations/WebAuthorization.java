@@ -16,37 +16,42 @@ import javax.servlet.http.HttpSession;
 
 @EnableWebSecurity
 @Configuration
-public class WebAuthorization {
+public class  WebAuthorization {
 
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/web/index.html").permitAll()
-                .antMatchers("/web/js/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/login").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/logout").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/clients").permitAll()
-                .antMatchers("/web/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/h2-console").hasAuthority("ADMIN")
-                .antMatchers("/rest/**").hasAuthority("ADMIN")
-                .antMatchers("/api/clients/current/accounts").hasAuthority("CLIENT")
-                .antMatchers("/api/clients/current/cards").hasAuthority("CLIENT")
-                .antMatchers("/web/accounts.html").hasAuthority("CLIENT")
-                .antMatchers("/web/account.html").hasAuthority("CLIENT")
-                .antMatchers("/web/cards.html").hasAuthority("CLIENT");
+                .antMatchers("/web/index.html", "/web/js/**", "/web/css/**", "/web/img/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/login", "/api/logout", "/api/clients").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/clients/current/cards", "/api/clients/current/accounts", "/api/clients/current/transactions").hasAnyAuthority("CLIENT", "ADMIN")
+                .antMatchers("/web/admin/**", "/h2-console", "/rest/**").hasAuthority("ADMIN")
+                .antMatchers("/api/clients/current/cards","/api/clients/current/accounts","/api/clients/current" ).hasAuthority("CLIENT")
+                .antMatchers("/web/accounts.html", "/web/account.html", "/web/cards.html", "/web/transfers.html").hasAuthority("CLIENT")
+                .antMatchers("/api/clients", "/api/accounts").hasAuthority("CLIENT");
 
         http.formLogin()
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .loginPage("/api/login");
+
         http.logout().logoutUrl("/api/logout").deleteCookies("JSESSIONID");
 
-
+        //turn off checking for CSRF tokens
         http.csrf().disable();
-        http.headers().frameOptions().disable();// if user is not authenticated, just send an authentication failure response
-        http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));// if login is successful, just clear the flags asking for authentication
-        http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));// if login fails, just send an authentication failure response
-        http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));// if logout is successful, just send a success response
+
+        // disabling fameOptions so h2-console can be accessed
+        http.headers().frameOptions().disable();
+
+        // if user is not authenticated, just send an authentication failure response
+        http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
+
+        // if login is successful, just clear the flags asking for authentication
+        http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
+
+        // if login fails, just send an authentication failure response
+        http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
+
+        // if logout is successful, just send a success response
         http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
         return http.build();
 
@@ -58,10 +63,6 @@ public class WebAuthorization {
             session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
         }
     }
-
-
-
-
 
 
 }
