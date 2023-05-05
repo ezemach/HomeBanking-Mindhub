@@ -1,15 +1,14 @@
 package com.mindhub.homebanking.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
-import java.util.Set;
+import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static java.util.stream.Collectors.toList;
 
 @Entity
 public class Client {
@@ -20,35 +19,30 @@ public class Client {
     private long id;
     private String firstName;
     private String lastName;
-
     private String email;
 
+    private String password;
 
-    @OneToMany(mappedBy="owner", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
     private Set<Account> accounts = new HashSet<>();
+
+    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    private Set<ClientLoan> clientLoans = new HashSet<>();
+
+    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    private Set <Card> cards = new HashSet<>();
 
 
     public Client () {}
 
 
-    public Client(String first, String last, String mail) {
+    public Client(String first, String last, String email, String password) {
         this.firstName = first;
         this.lastName = last;
-        this.email = mail;
+        this.email = email;
+        this.password = password;
     }
 
-    public Set<Account> getAccounts(){
-        return accounts;
-    }
-
-    public void addAccount (Account account){
-        account.setOwner(this);
-        accounts.add(account);
-    }
-
-    public void setAccounts(Set<Account> accounts) {
-        this.accounts = accounts;
-    }
     public String getFirstName() {
         return firstName;
     }
@@ -83,10 +77,57 @@ public class Client {
     }
 
 
+    public Set<Account> getAccounts(){
+        return accounts;
+    }
+
+    public void addAccount (Account account){
+        account.setClient(this);
+        accounts.add(account);
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public Set<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(Set<Card> cards) {
+        this.cards = cards;
+    }
+
+    public void addCard (Card card){
+        card.setClient(this);
+        cards.add(card);
+    }
 
 
-//    public String toString() {
-//        return firstName + " " + lastName + " " + email;
-//    }
+    public void addClientLoan(ClientLoan clientLoan) {
+        clientLoan.setClient(this);
+        clientLoans.add(clientLoan);
+    }
 
+    public Set<ClientLoan> getClientLoans() {
+        return clientLoans;
+    }
+
+    public void setClientLoans(Set<ClientLoan> clientLoans) {
+        this.clientLoans = clientLoans;
+    }
+
+    @JsonIgnore
+    public List<Loan> getLoans() {
+        return clientLoans.stream().map(sub -> sub.getLoan()).collect(toList());
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
