@@ -6,7 +6,10 @@ createApp({
             externAccount:"",
             ownAccount:"",
             amount:"",
-            description:""
+            description:"",
+            accounts:"",
+            myAccount:"",
+            otherAccount:""
         }
     },
     created() {
@@ -53,43 +56,23 @@ createApp({
                 this.error = "failed to create transaction. Please try again!"    
             });     
         },
+        ownAcc(){
+            this.myAccount = true
+            this.otherAccount = false
+
+        },
+        forAcc(){
+          this.myAccount = false
+          this.otherAccount = true
+        },
+        logout() {
+          axios.post('/api/logout')
+          .then(response => {
+                      window.location.replace('./index.html')
+              })
+              .catch(err => console.log(err));},
     }
 
 })
 .mount('#app')
 
-var ownAccountFields = document.getElementById("own_account_fields");
-var thirdPartyFields = document.getElementById("third_party_fields");
-
-document.getElementById("own_account").addEventListener("click", function() {
-  ownAccountFields.style.display = "block";
-  thirdPartyFields.style.display = "none";
-});
-
-document.getElementById("third_party").addEventListener("click", function() {
-  ownAccountFields.style.display = "none";
-  thirdPartyFields.style.display = "block";
-});
-
-document.querySelector("form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  var transferType = document.querySelector('input[name="transfer_type"]:checked').value;
-  if (transferType === "own_account") {
-    var destinationAccount = document.getElementById("destination_account").value;
-    if (destinationAccount === "") {
-      alert("Selecciona una cuenta de destino");
-      return false;
-    }
-  } else if (transferType === "third_party") {
-    var accountNumber = document.getElementById("account_number").value;
-    if (accountNumber === "") {
-      alert("Ingresa el número de cuenta");
-      return false;
-    }
-  } else {
-    alert("Selecciona un tipo de transferencia");
-    return false;
-  }
-  alert("Transferencia enviada");
-  return true;
-});

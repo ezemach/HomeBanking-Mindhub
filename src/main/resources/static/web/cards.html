@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="./css/cards.css" rel="stylesheet" />
     <link rel="shortcut icon" href="./images/faviBank.png" type="image/x-icon" />
-    <!-- <link rel="stylesheet"
+    <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
 </head>
@@ -29,9 +29,6 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3 pt-3">
-                            <li class="nav-item">
-                                <a class="nav-link" href="./index.html">Home</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="./accounts.html">Accounts</a>
                             </li>
@@ -145,7 +142,7 @@
         
                 <div class="d-flex justify-content-center">
                     <template v-if="tarjetas.length < 6">
-                        <a type="button" class=" nav-link bg-black mb-4 d-flex" href="./create-cards.html">CREATE
+                        <a type="button" class=" button-perspective" href="./create-cards.html">CREATE
                             NEW
                             CARD?</a>
                     </template>
@@ -156,6 +153,7 @@
             </div>
         </main>
     </div>
+    
 
 
 
