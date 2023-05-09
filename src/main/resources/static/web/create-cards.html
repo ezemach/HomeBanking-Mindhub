@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Home | MindHub Brothers Bank</title>
+    <title> Cards | MindHub Brothers Bank</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="./css/style.css" rel="stylesheet" />
@@ -36,13 +36,16 @@
                                 <a class="nav-link" href="./index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="./accounts.html">Accounts</a>
+                                <a class="nav-link" href="./accounts.html">Accounts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="./cards.html">Cards</a>
+                                <a class="nav-link" href="./cards.html">Cards</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link active" href="#">Create Cards</a>
+                            </li>
+                            <li class="nav-item">
+                                <a type="submit" class="nav-link" href="./index.html" @click.prevent="logout">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -67,7 +70,6 @@
                                     <div class="form-group">
                                         <select v-model="color" class="form-select" type="text" placeholder="Type Color"
                                             required>
-                                            <option>select color card</option>
                                             <option value="GOLD">GOLD</option>
                                             <option value="SILVER">SILVER</option>
                                             <option value="TITANIUM">TITANIUM</option>
@@ -76,15 +78,14 @@
                                     <div class="form-group">
                                         <select v-model="type" class="form-select" type="text" placeholder="Type Card"
                                             required>
-                                            <option>select card type</option>
                                             <option value="DEBIT">DEBIT</option>
                                             <option value="CREDIT">CREDIT</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-primary submit px-3"
-                                            @click.prevent="createCard">Create Card</button>
+                                        <button class="container-fluid button-perspective mt-5 mb-5" @click.prevent="createCard">CREATE A NEW CARD</button>
+                
                                     </div>
                                 </form>
 
