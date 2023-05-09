@@ -10,6 +10,10 @@
     border-radius: 20%;
 }
 
+#AccNumber{
+    color:#dfd9d9;
+}
+
 
 #app h1 {
     font-size: 60px;
@@ -35,7 +39,7 @@ main {
 }
 
 footer {
-    min-height: 30vh;
+    min-height: 15vh;
 }
 
 .GOLD {
@@ -45,10 +49,10 @@ footer {
 
 .TITANIUM {
     background-color: #7f7f7f;
-    background-size: cover;
+    /* background-size: cover; */
 }
 
-#imagenCard {
+/* #imagenCard {
     position: center center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url("../images/cardBanco3.jpg");
@@ -56,9 +60,9 @@ footer {
     background-attachment: scroll;
     background-position: center center;
 
-}
+} */
 
-#btnNewAcc {
+/* #btnNewAcc {
     width: 200px;
     background-color: #282d32;
     border-radius: 5%;
@@ -68,7 +72,7 @@ footer {
     border: 1px solid #fbceb5;
     background-color: white;
     color: white;
-}
+} */
 
 nav {
     min-height: 10vh;
@@ -117,7 +121,7 @@ main.masthead {
     padding-bottom: 6rem;
     text-align: center;
     color: #fff;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
         url("../images/header-bg.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -254,6 +258,19 @@ main.masthead .masthead-heading {
     margin-bottom: 0;
 }
 
+#cardAccount{
+    max-width: 300px !important;
+    max-height: 200px !important;
+    /* background-color: #FFF; */
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+
 
 
 .card-container {
@@ -267,7 +284,7 @@ main.masthead .masthead-heading {
     max-height: 400px;
     /* background-color: #FFF; */
     border-radius: 5px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
     overflow: hidden;
     position: relative;
     margin: 10px auto;
@@ -286,13 +303,13 @@ main.masthead .masthead-heading {
     font-weight: bold;
     color: #FFF;
     padding: 15px 20px;
-    background: linear-gradient(140deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0) 50%);
+    background: linear-gradient(140deg, rgba(0, 0, 0, 0.8) 50%, rgba(255, 255, 0, 0) 50%);
     transition: all 0.15s linear;
 }
 
 .profile-card-6 .profile-position {
     position: absolute;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(243, 239, 239, 0.4);
     left: 30px;
     top: 100px;
     transition: all 0.15s linear;
@@ -303,8 +320,8 @@ main.masthead .masthead-heading {
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0));
-    color: #FFF;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 80%, rgba(7, 7, 1, 0));
+    color: #dbd5d5;
     padding: 50px 0px 20px 0px;
     transition: all 0.15s linear;
 }
@@ -314,7 +331,7 @@ main.masthead .masthead-heading {
 }
 
 .profile-card-6 .profile-overview p {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(241, 235, 235, 0.7);
 }
 
 .profile-card-6:hover img {
@@ -334,212 +351,18 @@ main.masthead .masthead-heading {
     padding-bottom: 25px;
 }
 
-/* .profile-card-7 {
-    background-color: #FFF;
-    border-radius: 5px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    margin: 10px auto;
-    cursor: pointer;
-}
-
-.profile-card-7 .profile-content {
-    padding: 60px 30px 30px 30px;
-    background-color: #FFF;
-    position: relative;
-}
-
-.profile-card-7 .profile-content img {
+/* .container {
     position: absolute;
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    top: -40px;
-    border: 5px solid #FFF;
-}
 
-.profile-card-7 .profile-content .profile-name {
-    position: absolute;
-    font-size: 17px;
-    font-weight: bold;
-    top: -35px;
-    left: 125px;
-    color: #FFF;
-}
-
-.profile-card-7 .profile-overview {
-    padding: 5px 0px;
-}
-
-.profile-card-7 .profile-overview p {
-    color: #777;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.profile-card-7 .profile-overview h5 {
-    color: #142437;
-    font-weight: bold;
-}
-
-.profile-card-8 {
-    background: linear-gradient(#09121c, #36445a);
-    border-radius: 5px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    margin: 10px auto;
-    cursor: pointer;
-    transition: all 0.25s linear;
-}
-
-.profile-card-8 .profile-name {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 25px;
-    color: #58d683;
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.profile-card-8 .profile-designation {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 50px;
-    color: #FFF;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.profile-card-8 .profile-icons {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 80px;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.profile-card-8 .profile-icons .fa {
-    margin: 5px;
-}
-
-.profile-card-8:hover {
-    transform: scale(1.05, 1.05);
-}
-
-.profile-card-9 {
-    border-radius: 10px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    margin: 10px auto;
-    cursor: pointer;
-    padding: 30px 15px;
-    background-color: #FFF;
-    transition: all 0.25s linear;
-}
-
-.profile-card-9 img {
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    margin: 10px auto;
-}
-
-.profile-card-9 .profile-name {
-    font-size: 15px;
-    color: #3249b9;
-    font-weight: 600;
-}
-
-.profile-card-9 .profile-designation {
-    font-size: 13px;
-    color: #777;
-}
-
-.profile-card-9 .profile-description {
-    padding: 10px;
-    font-size: 13px;
-    color: #777;
-    margin: 15px 0px;
-    background-color: #F1F2F3;
-    border-radius: 5px;
-}
-
-.profile-card-9 a {
-    padding: 10px 15px;
-    background-color: #3249b9;
-    color: #FFF;
-    font-size: 11px;
-    border-radius: 25px;
-}
-
-.profile-card-9:hover {
-    transform: scale(1.05, 1.05);
-}
-
-.profile-card-10 {
-    border-radius: 5px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    margin: 10px auto;
-    cursor: pointer;
-    padding: 30px 15px;
-    background-color: #1f2124;
-    color: #EEE;
-}
-
-.profile-card-10 img {
-    margin: 10px auto;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 10px solid transparent;
-    box-shadow: 0px 0px 0px 2px #64c17b;
-    transition: all 0.25s linear;
-}
-
-.profile-card-10 .profile-name {
-    color: #FFF;
-    font-weight: bold;
-    font-size: 17px;
-}
-
-.profile-card-10 .profile-location {
-    font-size: 13px;
-    opacity: 0.7;
-}
-
-.profile-card-10 .profile-description {
-    padding: 10px;
-    font-size: 13px;
-}
-
-.profile-card-10 .profile-icons .fa {
-    color: #ffc75e;
-    margin: 10px;
-}
-
-.profile-card-10:hover img {
-    transform: scale(1.1);
 } */
 
-.container {
-    position: absolute;
-
-}
-
 table {
-    width: 600px;
+    width: 400px;
+    color: #333232;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(199, 190, 190, 0.8) !important;
     font-family: sans-serif;
 
 }
@@ -577,3 +400,60 @@ tbody td:hover tr:hover {
     z-index: -1;
 
 }
+
+/*PERPECTIVE */
+.button-perspective {
+    background-color: #282d32;
+    border: 1 solid;
+    border-color: white;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.75rem;
+    padding: .75rem 1.65rem;
+    /* position: relative; */
+    text-align: center;
+    text-decoration: none white solid;
+    text-decoration-thickness: auto;
+    width: 750%;
+    max-width: 420px;
+    /* position: relative; */
+    cursor: pointer;
+    transform: rotate(-2deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-perspective:focus {
+    outline: 0;
+  }
+  
+  .button-perspective:after {
+    content: '';
+    position: absolute;
+    border: 1px solid #000000;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+  }
+  
+  .button-perspective:hover:after {
+    bottom: 2px;
+    left: 2px;
+  }
+  
+  @media (min-width: 768px) {
+    .button-perspective {
+      padding: .75rem 2rem;
+      font-size: 1rem;
+    }
+  }
+  
+  
+  

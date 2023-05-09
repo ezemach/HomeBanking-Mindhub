@@ -33,24 +33,23 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3 pt-3">
                             <li class="nav-item">
-                                <a class="nav-link" href="./index.html">Home</a>
+                                <a class="nav-link" href="./accounts.html">Accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="./cards.html">Cards</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="#">Transfers</a>
                               </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
-                            </li>
+                              <li class="nav-item">
+                                <a type="submit" class="nav-link" href="./login.html" @click.prevent="logout">Logout</a>
+                              </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
         <main class="masthead">
-            <h1 class="masthead-heading text-uppercase">MindHub Brothers Bank</h1>
-            <div class="masthead-subheading">
-                We are waiting for you!
-            </div>
             <section class="ftco-section">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -61,40 +60,56 @@
                                 <h3 class="mb-4 text-center">Transfer</h3>
 
                                 <form action="#" class="signin-form">
-                                    <div>
-                                        <input type="radio" name="transfer_type" value="own_account" id="own_account">
-                                        <label class="fs-4" for="own_account"> transfer to own Account</label>
-                                    </div> 
-                                      <div id="own_account_fields" style="display:none;">
-                                        <p>
-                                          <label  class="fs-4 gap-1" for="destination_account">  select your account:</label>
-                                          <select class="d-flex justify-content-around"name="destination_account" id="destination_account" v-model="ownAccount">
-                                            <option value="0"></option>
-                                            <option value="1"></option>
+                            
+                                      <div id="">
+                                
+                                          <label  class="fs-4 gap-1" for="own_account">  select your account:</label>
+
+                                          <select class="select-css"  name="own_account" id="own_account" v-model="ownAccount" required>
+                                           <template v-for="account of data.accounts">
+                                            <option  :value="account.number">{{account.number}}</option>
+                                        </template>
                                           </select>
-                                        </p>
+                            
                                       </div>
-                                      <div>
-                                        <input type="radio" name="transfer_type" value="third_party" id="third_party">
-                                        <label class="fs-4 gap-1" for="third_party">transfer to third Account:</label>
+                                      
+                                      <div id="">
+                                       <label  class="fs-4 gap-1" for="">  select the account to transfer:</label>
+                                       <div class="d-flex gap-3 mb-4">
+                                        <button @click="ownAcc" class="button-perspective" role="button">Own Account</button>
+                                        <button @click="forAcc"class="button-perspective" role="button">Foreign Account</button>
+                                       </div>
                                       </div>
-                                      <div id="third_party_fields" style="display:none;">
-                                        <p>
-                                          <label for="account_number">Account Number:</label>
-                                          <input type="text" name="account_number" id="account_number" v-model="externAccount"
-                                          required>
-                                        </p>
+
+                                       <div v-if="myAccount" class="mb-2" >
+                                        <label  class="fs-4 gap-1" for="">  select the account:</label>
+                                        <select class="select-css"name="destination_account" id="destination_account" v-model="externAccount" required>
+                                         <template v-for="account of data.accounts">
+                                          <option :value="account.number">{{account.number}}</option>
+                                         </template>
+                                        </select>
                                       </div>
+                                      <div v-if="otherAccount" class="form-group mb-3">
+                                        <label  class="fs-4 gap-1" for="">  full the account number:</label>
+                                        <input type="text" class="form-control" placeholder="amount" v-model="externAccount"
+                                            required>
+                                      </div>
+
+
+                          
+                                      
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="amount" v-model="amount"
+                                        <label  class="fs-4 gap-1" for="">  amount:</label>
+                                        <input type="text" class="form-control mb-3" placeholder="amount" v-model="amount"
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Description"
+                                        <label  class="fs-4 gap-1" for="">  Description:</label>
+                                        <input type="text" class="form-control mb-3" placeholder="Description"
                                             v-model="description" required>
                                     </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-primary submit px-3"
+                                    <div class="form-group mt-4">
+                                        <button type="submit"class="button-perspective mt-3"
                                             @click.prevent="newTransfer">Transfer</button>
                                     </div>
 

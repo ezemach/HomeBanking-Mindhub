@@ -8,7 +8,7 @@ const app = createApp({
         }
     },
     created() {
-        axios.post('http://localhost:8080/api/clients/current')
+        axios.get('http://localhost:8080/api/clients/current')
             .then(response => {
                 this.data = response.data
                 this.cuentas = this.data.accounts
