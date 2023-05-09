@@ -86,7 +86,7 @@
       
           <template class="d-flex align-items-center" v-if="cuentas.length < 3">
             
-              <button class="container-fluid button-perspective mt-3 mb-5" @click.prevent="newAccount">CREATE NEW
+              <button class="container-fluid button-perspective mt-3 mb-5" @click.prevent="newAccount" onclick="window.location.replace('./accounts.html')">CREATE NEW
                 ACCOUNT?</button>
           </template>
           <template class="mt-3" v-else>
@@ -117,6 +117,7 @@
                 </tbody>
               </table>
             </div>
+           
           </template>
           <template v-else>
             <h2 class="container-fluid mt-5" style="
@@ -129,7 +130,9 @@
               Client whithout loans!
             </h2>
           </template>
+         
         </div>
+        <button type="button" class="container-fluid button-perspective mt-5 mb-5" onclick="window.location.replace('./loan-application.html')">APPLY A NEW LOAN?</button>
       </div>
     </main>
 

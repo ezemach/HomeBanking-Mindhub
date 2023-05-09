@@ -99,7 +99,7 @@ main.masthead {
     padding-bottom: 6rem;
     text-align: center;
     color: #fff;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
         url("../images/header-bg.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -12259,7 +12259,7 @@ textarea.form-control {
   text-decoration: none white solid;
   text-decoration-thickness: auto;
   width: 750%;
-  max-width: 420px;
+  max-width: 320px;
   position: relative;
   cursor: pointer;
   transform: rotate(-2deg);
@@ -12335,3 +12335,4 @@ textarea.form-control {
   }
   .select-css option {
     font-weight:normal;}
+
